@@ -1,0 +1,629 @@
+openapi: "3.0.3"
+# general information
+info:
+    title: Beverage Botique - Indulge in Beverage Bliss with us!
+    version: "1.0"
+    description: | # | for multi line description
+        Embrace the approaching summer vibes as we gather around the grill, relishing the company of friends. A delightful barbecue experience awaits, accompanied by the perfect complement of refreshing libations. In pursuit of enhancing your epicurean delight, we embark on a new venture, curating and delivering handpicked beverages right to your doorstep. Indulge in the art of savoring delightful drinks and elevate your barbecue soirées to new heights.
+    contact:
+        name: Group 15
+        url: https://gitlab.rz.uni-bamberg.de/dsg/soa/group15
+    license:
+        name: Apache 2.0
+        url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+    - url: http://localhost:9999/v1
+      description: Dev Server
+components:
+    schemas:
+        BottleDTO:
+            type: object
+            required:
+                - name
+                - volume
+                - isAlcoholic
+                - volumePercent
+                - price
+                - inStock
+            properties:
+                id:
+                    type: integer
+                name:
+                    type: string
+                volume:
+                    type: number
+                isAlcoholic:
+                    type: boolean
+                price:
+                    type: number
+                inStock:
+                    type: integer
+                volumePercent:
+                    type: number
+                supplier:
+                    type: string
+                href:
+                    type: string
+        CrateDTO:
+            type: object
+            required:
+                - bottle
+                - noOfBottles
+                - price
+                - inStock
+            properties:
+                id:
+                    type: integer
+                bottle:
+                    $ref: "#/components/schemas/BottleDTO"
+                noOfBottles:
+                    type: number
+                price:
+                    type: number
+                inStock:
+                    type: number
+                href:
+                    type: string
+        OrderDTO:
+            type: object
+            required:
+                - orderItems
+                - price
+                - status
+            properties:
+                orderId:
+                    type: integer
+                orderItems:
+                    type: array
+                    items:
+                        $ref: "#/components/schemas/OrderItemDTO"
+                price:
+                    type: number
+                status:
+                    type: string
+                href:
+                    type: string
+        OrderItemDTO:
+            type: object
+            required:
+                - number
+                - beverage
+                - quantity
+            properties:
+                id:
+                    type: integer
+                bottle:
+                    $ref: "#/components/schemas/BeverageDTO"
+                noOfBottles:
+                    type: number
+                price:
+                    type: boolean
+                inStock:
+                    type: number
+                href:
+                    type: string
+        BeverageDTO:
+            type: object
+            required:
+                - id
+                - price
+                - beverageType
+            properties:
+                id:
+                    type: integer
+                price:
+                    type: number
+                beverageType:
+                    type: string
+        Pagination:
+            type: object
+            properties:
+                page:
+                    type: number
+                noOfPages:
+                    type: number
+                first:
+                    type: string
+                previous:
+                    type: string
+                next:
+                    type: string
+                last:
+                    type: string
+        PaginatedBottles:
+            type: object
+            properties:
+                pagination:
+                    $ref: "#/components/schemas/Pagination"
+                bottles:
+                    type: array
+                    items:
+                        $ref: "#/components/schemas/BottleDTO"
+                href:
+                    type: string
+        PaginatedCrates:
+            type: object
+            properties:
+                pagination:
+                    $ref: "#/components/schemas/Pagination"
+                crates:
+                    type: array
+                    items:
+                        $ref: "#/components/schemas/CrateDTO"
+                href:
+                    type: string
+        PaginatedOrders:
+            type: object
+            properties:
+                pagination:
+                    $ref: "#/components/schemas/Pagination"
+                crates:
+                    type: array
+                    items:
+                        $ref: "#/components/schemas/CrateDTO"
+                href:
+                    type: string
+        ErrorMessage:
+            type: object
+            properties:
+                errorType:
+                    type: string
+                message:
+                    type: string
+
+# resources (one of the REST principles)
+paths:
+    /bottle/list:
+        get:
+            summary: Get All Bottles
+            # request parameters
+            parameters:
+                - name: page
+                  in: query
+                  schema:
+                      type: number
+                      default: 1
+                - name: pageLimit
+                  in: query
+                  schema:
+                      type: number
+                      default: 10
+            # possible responses and their parameters
+            responses:
+                "200":
+                    description: List of all bottles
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/PaginatedBottles"
+                "400":
+                    description: A bad request initiated by the user
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/ErrorMessage"
+            tags:
+                - Bottle Endpoints
+    /bottle/search:
+        get:
+            summary: Bottle Search
+            # request parameters
+            parameters:
+                - name: page
+                  in: query
+                  schema:
+                      type: number
+                      default: 1
+                - name: pageLimit
+                  in: query
+                  schema:
+                      type: number
+                      default: 10
+                - name: minPrice
+                  in: query
+                  schema:
+                      type: number
+                - name: maxPrice
+                  in: query
+                  schema:
+                      type: number
+            responses:
+                "200":
+                    description: List of all bottles
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/PaginatedBottles"
+                "400":
+                    description: Message body was empty
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/ErrorMessage"
+            tags:
+                - Bottle Endpoints
+    /bottle/{bottleId}:
+        get:
+            summary: Get a Bottle By ID
+            # request parameters
+            parameters:
+                - name: bottleId
+                  in: path
+                  required: true
+                  schema:
+                      type: integer
+            responses:
+                "200":
+                    description: Bottle Response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/BottleDTO"
+                "400":
+                    description: Message body was empty
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/ErrorMessage"
+            tags:
+                - Bottle Endpoints
+    /bottle/add:
+        post:
+            summary: Create New Bottle
+            # request parameters
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/BottleDTO"
+            responses:
+                "200":
+                    description: Bottle Response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/BottleDTO"
+                "400":
+                    description: Message body was empty
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/ErrorMessage"
+            tags:
+                - Bottle Endpoints
+    /bottle/update/{bottleId}:
+        put:
+            summary: Update Bottle
+            # request parameters
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/BottleDTO"
+            parameters:
+                - name: bottleId
+                  in: path
+                  required: true
+                  schema:
+                      type: integer
+            responses:
+                "200":
+                    description: Updated Bottle Response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/BottleDTO"
+                "400":
+                    description: Message body was empty
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/ErrorMessage"
+            tags:
+                - Bottle Endpoints
+    /crate/list:
+        get:
+            summary: Get All Crates
+            # request parameters
+            parameters:
+                - name: page
+                  in: query
+                  schema:
+                      type: number
+                      default: 1
+                - name: pageLimit
+                  in: query
+                  schema:
+                      type: number
+                      default: 10
+            # possible responses and their parameters
+            responses:
+                "200":
+                    description: List of all crates
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/PaginatedCrates"
+                "400":
+                    description: A bad request initiated by the user
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/ErrorMessage"
+            tags:
+                - Crate Endpoints
+    /crate/search:
+        get:
+            summary: Search Crates
+            # request parameters
+            parameters:
+                - name: page
+                  in: query
+                  schema:
+                      type: number
+                      default: 1
+                - name: pageLimit
+                  in: query
+                  schema:
+                      type: number
+                      default: 10
+                - name: minPrice
+                  in: query
+                  schema:
+                      type: number
+                - name: maxPrice
+                  in: query
+                  schema:
+                      type: number
+            responses:
+                "200":
+                    description: List of all crates
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/PaginatedCrates"
+                "400":
+                    description: Message body was empty
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/ErrorMessage"
+            tags:
+                - Crate Endpoints
+    /crate/{crateId}:
+        get:
+            summary: Get a Crate by ID
+            # request parameters
+            parameters:
+                - name: crateId
+                  in: path
+                  required: true
+                  schema:
+                      type: integer
+            responses:
+                "200":
+                    description: Crate Response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/CrateDTO"
+                "400":
+                    description: Message body was empty
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/ErrorMessage"
+            tags:
+                - Crate Endpoints
+    /crate/add:
+        post:
+            summary: Create New Crate
+            # request parameters
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/CrateDTO"
+            responses:
+                "200":
+                    description: Crate Response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/CrateDTO"
+                "400":
+                    description: Message body was empty
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/ErrorMessage"
+            tags:
+                - Crate Endpoints
+    /crate/update/{crateId}:
+        put:
+            summary: Update Crate details
+            # request parameters
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/CrateDTO"
+            parameters:
+                - name: crateId
+                  in: path
+                  required: true
+                  schema:
+                      type: integer
+            responses:
+                "200":
+                    description: Updated Crate Response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/CrateDTO"
+                "400":
+                    description: Message body was empty
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/ErrorMessage"
+            tags:
+                - Crate Endpoints
+    /order/{orderId}:
+        get:
+            summary: Get Order by ID
+            parameters:
+                - name: orderId
+                  in: path
+                  required: true
+                  schema:
+                      type: integer
+            responses:
+                "200":
+                    description: Order Response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/OrderDTO"
+                "400":
+                    description: Message body was empty
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/ErrorMessage"
+            tags:
+                - Order Endpoints
+    /order/list:
+        get:
+            summary: Get all available orders
+            # request parameters
+            parameters:
+                - name: page
+                  in: query
+                  schema:
+                      type: number
+                      default: 1
+                - name: pageLimit
+                  in: query
+                  schema:
+                      type: number
+                      default: 10
+            responses:
+                "200":
+                    description: All available orders
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/PaginatedOrders"
+                "400":
+                    description: Message body was empty
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/ErrorMessage"
+            tags:
+                - Order Endpoints
+    /order/create:
+        post:
+            summary: Create/Submit new order
+            # request parameters
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/OrderDTO"
+            responses:
+                "200":
+                    description: Order Created Response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/OrderDTO"
+                "400":
+                    description: Message body was empty
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/ErrorMessage"
+            tags:
+                - Order Endpoints
+    /order/update/{orderId}:
+        put:
+            summary: Update Order details
+            # request parameters
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/OrderDTO"
+            parameters:
+                - name: orderId
+                  in: path
+                  required: true
+                  schema:
+                      type: integer
+            responses:
+                "200":
+                    description: Updated Order
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/OrderDTO"
+                "400":
+                    description: Message body was empty
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/ErrorMessage"
+            tags:
+                - Order Endpoints
+    /order/process/{orderId}/{status}:
+        get:
+            summary: Update Order Status
+            # request parameters
+            parameters:
+                - name: orderId
+                  in: path
+                  required: true
+                  schema:
+                      type: integer
+                - name: status
+                  in: path
+                  required: true
+                  schema:
+                      type: string
+            responses:
+                "200":
+                    description: Updated Order Response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/OrderDTO"
+                "400":
+                    description: Message body was empty
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/ErrorMessage"
+            tags:
+                - Order Endpoints
+    /order/delete/{orderId}:
+        delete:
+            summary: Delete Order
+            parameters:
+                - name: orderId
+                  in: path
+                  required: true
+                  schema:
+                      type: integer
+            responses:
+                "200":
+                    description: "Order deleted"
+                "400":
+                    description: Message body was empty
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/ErrorMessage"
+            tags:
+                - Order Endpoints

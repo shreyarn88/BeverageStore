@@ -1,0 +1,1322 @@
+_type: export
+__export_format: 4
+__export_date: 2022-06-26T20:25:33.082Z
+__export_source: insomnia.desktop.app:v2022.4.2
+resources:
+  - _id: req_wrk_0ee1dac2d83e480abe1f891394e7c840aadf9f0f
+    parentId: fld_83b3157c0d394833a09485461f053031
+    modified: 1656275026416
+    created: 1656273523928
+    url: "{{ base_url }}/crate/add"
+    name: Create New Crate
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "id": 0,
+          "bottle": {
+            "id": 0,
+            "name": "string",
+            "volume": 0,
+            "isAlcoholic": true,
+            "price": 0,
+            "inStock": 0,
+            "volumePercent": 0,
+            "supplier": "string",
+            "href": "string"
+          },
+          "noOfBottles": 0,
+          "price": 0,
+          "inStock": 0,
+          "href": "string"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_b6aba0e460c84ca688d178b9c308e745
+    authentication: {}
+    metaSortKey: -1656273524033
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_83b3157c0d394833a09485461f053031
+    parentId: wrk_0ee1dac2d83e480abe1f891394e7c840
+    modified: 1656274026354
+    created: 1656274026354
+    name: Crates
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1656274026354
+    _type: request_group
+  - _id: wrk_0ee1dac2d83e480abe1f891394e7c840
+    parentId: null
+    modified: 1656274597046
+    created: 1656273461326
+    name: New Document
+    description: |-
+      # Beverage Store Service
+      - Order API
+      - Bottle API
+      - Crate API
+    scope: design
+    _type: workspace
+  - _id: req_wrk_0ee1dac2d83e480abe1f891394e7c840297e81e3
+    parentId: fld_83b3157c0d394833a09485461f053031
+    modified: 1656274851577
+    created: 1656273523932
+    url: "{{ base_url }}/crate/search"
+    name: Get All Crates
+    description: ""
+    method: GET
+    body: {}
+    parameters:
+      - name: page
+        disabled: true
+        value: "1"
+        id: pair_3c05a69137ed42bfa07dadaf4ec8164d
+      - name: pageLimit
+        disabled: true
+        value: "10"
+        id: pair_be8a60664b324535a1012f887a031678
+      - name: minPrice
+        disabled: true
+        value: "0"
+        id: pair_8f1160c4f9bd43288edbe540dd67827d
+      - name: maxPrice
+        disabled: true
+        value: "0"
+        id: pair_7dee374f2af4431d95ad535672762e93
+    headers: []
+    authentication: {}
+    metaSortKey: -1656273523983
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_wrk_0ee1dac2d83e480abe1f891394e7c8400e2ee0d3
+    parentId: fld_83b3157c0d394833a09485461f053031
+    modified: 1656275028971
+    created: 1656273523930
+    url: "{{ base_url }}/crate/{{ crateId }}"
+    name: Get a Crate by ID
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1656273523971.2812
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_wrk_0ee1dac2d83e480abe1f891394e7c840addacd68
+    parentId: fld_83b3157c0d394833a09485461f053031
+    modified: 1656275036790
+    created: 1656273523933
+    url: "{{ base_url }}/crate/list"
+    name: Search Crate
+    description: ""
+    method: GET
+    body: {}
+    parameters:
+      - name: page
+        disabled: true
+        value: "1"
+        id: pair_f053e2eb612640c9bf1d137dc9362dff
+      - name: pageLimit
+        disabled: true
+        value: "10"
+        id: pair_8eff22fd53434cbf8f3fee026d8a60c5
+    headers: []
+    authentication: {}
+    metaSortKey: -1656273523965.4219
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_wrk_0ee1dac2d83e480abe1f891394e7c840c7452fa5
+    parentId: fld_83b3157c0d394833a09485461f053031
+    modified: 1656274929225
+    created: 1656273523926
+    url: "{{ base_url }}/crate/update/{{ crateId }}"
+    name: Update Crate
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "id": 0,
+          "bottle": {
+            "id": 0,
+            "name": "string",
+            "volume": 0,
+            "isAlcoholic": true,
+            "price": 0,
+            "inStock": 0,
+            "volumePercent": 0,
+            "supplier": "string",
+            "href": "string"
+          },
+          "noOfBottles": 0,
+          "price": 0,
+          "inStock": 0,
+          "href": "string"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_772adba051b14d20af3a662269aaa457
+    authentication: {}
+    metaSortKey: -1656273523959.5625
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_wrk_0ee1dac2d83e480abe1f891394e7c840ca1b296b
+    parentId: fld_016641a7eff14c539ac16bb592c123af
+    modified: 1656274996433
+    created: 1656273523937
+    url: "{{ base_url }}/bottle/add"
+    name: Create New Bottle
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "id": 0,
+          "name": "string",
+          "volume": 0,
+          "isAlcoholic": true,
+          "price": 0,
+          "inStock": 0,
+          "volumePercent": 0,
+          "supplier": "string",
+          "href": "string"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_d9864d9d284b4ba6add442cd76dfc0a9
+    authentication: {}
+    metaSortKey: -1656273605227.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_016641a7eff14c539ac16bb592c123af
+    parentId: wrk_0ee1dac2d83e480abe1f891394e7c840
+    modified: 1656273633399
+    created: 1656273633399
+    name: Bottles
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1656273633399
+    _type: request_group
+  - _id: req_wrk_0ee1dac2d83e480abe1f891394e7c8402553ed60
+    parentId: fld_016641a7eff14c539ac16bb592c123af
+    modified: 1656275004271
+    created: 1656273523938
+    url: "{{ base_url }}/bottle/{{ bottleId }}"
+    name: Get Bottle By ID
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1656273605177.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_wrk_0ee1dac2d83e480abe1f891394e7c840c76ae2ac
+    parentId: fld_016641a7eff14c539ac16bb592c123af
+    modified: 1656275011036
+    created: 1656273523941
+    url: "{{ base_url }}/bottle/list"
+    name: Get All Bottles
+    description: ""
+    method: GET
+    body: {}
+    parameters:
+      - name: page
+        disabled: true
+        value: "1"
+        id: pair_83e6ff8cd4a0402baf6c5a5eaf54bf58
+      - name: pageLimit
+        disabled: true
+        value: "10"
+        id: pair_eaba26d68c5b4d678651ee2b991dc9a8
+    headers: []
+    authentication: {}
+    metaSortKey: -1656273605127.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_wrk_0ee1dac2d83e480abe1f891394e7c840f0a18b72
+    parentId: fld_016641a7eff14c539ac16bb592c123af
+    modified: 1656275018858
+    created: 1656273523940
+    url: "{{ base_url }}/bottle/search"
+    name: Search Bottles
+    description: ""
+    method: GET
+    body: {}
+    parameters:
+      - name: page
+        disabled: true
+        value: "1"
+        id: pair_d7bb39b1f4314682870c9e8e8033970f
+      - name: pageLimit
+        disabled: true
+        value: "10"
+        id: pair_ce32d1ac6ce54657b3307ef3f491f274
+      - name: minPrice
+        disabled: true
+        value: "0"
+        id: pair_255e7a0ca3f44313a88a81f303ad4d7a
+      - name: maxPrice
+        disabled: true
+        value: "0"
+        id: pair_a062f4854d6a484d9af4ddd3f4678e51
+    headers: []
+    authentication: {}
+    metaSortKey: -1656273605102.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_wrk_0ee1dac2d83e480abe1f891394e7c8401ff2b21c
+    parentId: fld_016641a7eff14c539ac16bb592c123af
+    modified: 1656275020402
+    created: 1656273523935
+    url: "{{ base_url }}/bottle/update/{{ bottleId }}"
+    name: Update Bottle
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "id": 0,
+          "name": "string",
+          "volume": 0,
+          "isAlcoholic": true,
+          "price": 0,
+          "inStock": 0,
+          "volumePercent": 0,
+          "supplier": "string",
+          "href": "string"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_f43edb167a0549fc83302f26944f043f
+    authentication: {}
+    metaSortKey: -1656273605052.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_wrk_0ee1dac2d83e480abe1f891394e7c84026186bff
+    parentId: fld_00fd40627048454ba3b1de088e7675b3
+    modified: 1656274978546
+    created: 1656273523919
+    url: "{{ base_url }}/order/create"
+    name: Create/Submit new order
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "orderId": 0,
+          "orderItems": [
+            {
+              "id": 0,
+              "bottle": {
+                "id": 0,
+                "price": 0,
+                "beverageType": "string"
+              },
+              "noOfBottles": 0,
+              "price": true,
+              "inStock": 0,
+              "href": "string"
+            }
+          ],
+          "price": 0,
+          "status": "string",
+          "href": "string"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_494eac43d8144c54b19ab7c74599b899
+    authentication: {}
+    metaSortKey: -1656273524066
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_00fd40627048454ba3b1de088e7675b3
+    parentId: wrk_0ee1dac2d83e480abe1f891394e7c840
+    modified: 1656273576756
+    created: 1656273576756
+    name: Orders
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1656273576756
+    _type: request_group
+  - _id: req_wrk_0ee1dac2d83e480abe1f891394e7c84052c7de1b
+    parentId: fld_00fd40627048454ba3b1de088e7675b3
+    modified: 1656274960735
+    created: 1656273523921
+    url: "{{ base_url }}/order/list"
+    name: Get All Orders
+    description: ""
+    method: GET
+    body: {}
+    parameters:
+      - name: page
+        disabled: true
+        value: "1"
+        id: pair_a18c303c8d5d4e1ebd6f8d97c87c650d
+      - name: pageLimit
+        disabled: true
+        value: "10"
+        id: pair_f9cd9692529143dcb403987e832a1b51
+    headers: []
+    authentication: {}
+    metaSortKey: -1656273524016
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_wrk_0ee1dac2d83e480abe1f891394e7c8404cb6ae7d
+    parentId: fld_00fd40627048454ba3b1de088e7675b3
+    modified: 1656274966502
+    created: 1656273523923
+    url: "{{ base_url }}/order/{{ orderId }}"
+    name: Get Order By ID
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1656273523966
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_wrk_0ee1dac2d83e480abe1f891394e7c84094a89c5b
+    parentId: fld_00fd40627048454ba3b1de088e7675b3
+    modified: 1656274989066
+    created: 1656273523916
+    url: "{{ base_url }}/order/update/{{ orderId }}"
+    name: Update Order
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "orderId": 0,
+          "orderItems": [
+            {
+              "id": 0,
+              "bottle": {
+                "id": 0,
+                "price": 0,
+                "beverageType": "string"
+              },
+              "noOfBottles": 0,
+              "price": true,
+              "inStock": 0,
+              "href": "string"
+            }
+          ],
+          "price": 0,
+          "status": "string",
+          "href": "string"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_34ef0b0a7722419fad4e65a477e19479
+    authentication: {}
+    metaSortKey: -1656273523961.3125
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_wrk_0ee1dac2d83e480abe1f891394e7c8409e729fb1
+    parentId: fld_00fd40627048454ba3b1de088e7675b3
+    modified: 1656274973691
+    created: 1656273523913
+    url: "{{ base_url }}/order/process/{{ orderId }}/{{ status }}"
+    name: Update Order Status
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1656273523956.625
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_wrk_0ee1dac2d83e480abe1f891394e7c8405fd242a2
+    parentId: fld_00fd40627048454ba3b1de088e7675b3
+    modified: 1656273603494
+    created: 1656273523908
+    url: "{{ base_url }}/order/delete/{{ orderId }}"
+    name: Delete Order
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1656273523941
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_04526fb5f700c4bf4a718d0a45c6d813cc706e2b
+    parentId: wrk_0ee1dac2d83e480abe1f891394e7c840
+    modified: 1656273880477
+    created: 1656273461361
+    name: Base Environment
+    data:
+      base_url: "{{ scheme }}://{{ host }}{{ base_path }}"
+    dataPropertyOrder:
+      "&":
+        - base_url
+    color: null
+    isPrivate: false
+    metaSortKey: 1656273461361
+    _type: environment
+  - _id: jar_04526fb5f700c4bf4a718d0a45c6d813cc706e2b
+    parentId: wrk_0ee1dac2d83e480abe1f891394e7c840
+    modified: 1656273461370
+    created: 1656273461370
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar
+  - _id: spc_47bec5620ce346769418d3e3c4a458a1
+    parentId: wrk_0ee1dac2d83e480abe1f891394e7c840
+    modified: 1656275044207
+    created: 1656273461352
+    fileName: Beverage Store
+    contents: >-
+      openapi: "3.0.3"
+
+      # general information
+
+      info:
+          title: Beverage Store Service
+          version: "1.0"
+          description: | # | for multi line description
+              Summer is coming and we are all looking forward to having a barbecue with friends.
+              For a nice barbecue, we also need some refreshing drinks. Therefore, we want to start a
+              new business where we sell beverages and deliver them to people.
+          contact:
+              name: Group 6
+              url: https://gitlab.rz.uni-bamberg.de/dsg/soa/group6
+          license:
+              name: Apache 2.0
+              url: https://www.apache.org/licenses/LICENSE-2.0.html
+      servers:
+          - url: http://localhost:9999/v1
+            description: Development Server
+      components:
+          schemas:
+              BottleDTO:
+                  type: object
+                  required:
+                      - name
+                      - volume
+                      - isAlcoholic
+                      - volumePercent
+                      - price
+                      - inStock
+                  properties:
+                      id:
+                          type: integer
+                      name:
+                          type: string
+                      volume:
+                          type: number
+                      isAlcoholic:
+                          type: boolean
+                      price:
+                          type: number
+                      inStock:
+                          type: integer
+                      volumePercent:
+                          type: number
+                      supplier:
+                          type: string
+                      href:
+                          type: string
+              CrateDTO:
+                  type: object
+                  required:
+                      - bottle
+                      - noOfBottles
+                      - price
+                      - inStock
+                  properties:
+                      id:
+                          type: integer
+                      bottle:
+                          $ref: "#/components/schemas/BottleDTO"
+                      noOfBottles:
+                          type: number
+                      price:
+                          type: number
+                      inStock:
+                          type: number
+                      href:
+                          type: string
+              OrderDTO:
+                  type: object
+                  required:
+                      - orderItems
+                      - price
+                      - status
+                  properties:
+                      orderId:
+                          type: integer
+                      orderItems:
+                          type: array
+                          items:
+                              $ref: "#/components/schemas/OrderItemDTO"
+                      price:
+                          type: number
+                      status:
+                          type: string
+                      href:
+                          type: string
+              OrderItemDTO:
+                  type: object
+                  required:
+                      - number
+                      - beverage
+                      - quantity
+                  properties:
+                      id:
+                          type: integer
+                      bottle:
+                          $ref: "#/components/schemas/BeverageDTO"
+                      noOfBottles:
+                          type: number
+                      price:
+                          type: boolean
+                      inStock:
+                          type: number
+                      href:
+                          type: string
+              BeverageDTO:
+                  type: object
+                  required:
+                      - id
+                      - price
+                      - beverageType
+                  properties:
+                      id:
+                          type: integer
+                      price:
+                          type: number
+                      beverageType:
+                          type: string
+              Pagination:
+                  type: object
+                  properties:
+                      page:
+                          type: number
+                      noOfPages:
+                          type: number
+                      first:
+                          type: string
+                      previous:
+                          type: string
+                      next:
+                          type: string
+                      last:
+                          type: string
+              PaginatedBottles:
+                  type: object
+                  properties:
+                      pagination:
+                          $ref: "#/components/schemas/Pagination"
+                      bottles:
+                          type: array
+                          items:
+                              $ref: "#/components/schemas/BottleDTO"
+                      href:
+                          type: string
+              PaginatedCrates:
+                  type: object
+                  properties:
+                      pagination:
+                          $ref: "#/components/schemas/Pagination"
+                      crates:
+                          type: array
+                          items:
+                              $ref: "#/components/schemas/CrateDTO"
+                      href:
+                          type: string
+              PaginatedOrders:
+                  type: object
+                  properties:
+                      pagination:
+                          $ref: "#/components/schemas/Pagination"
+                      crates:
+                          type: array
+                          items:
+                              $ref: "#/components/schemas/CrateDTO"
+                      href:
+                          type: string
+              ErrorMessage:
+                  type: object
+                  properties:
+                      errorType:
+                          type: string
+                      message:
+                          type: string
+
+      # resources (one of the REST principles)
+
+      paths:
+          /bottle/list:
+              get:
+                  summary: Get All Bottles
+                  # request parameters
+                  parameters:
+                      - name: page
+                        in: query
+                        schema:
+                            type: number
+                            default: 1
+                      - name: pageLimit
+                        in: query
+                        schema:
+                            type: number
+                            default: 10
+                  # possible responses and their parameters
+                  responses:
+                      "200":
+                          description: List of all bottles
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: "#/components/schemas/PaginatedBottles"
+                      "400":
+                          description: A bad request initiated by the user
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: "#/components/schemas/ErrorMessage"
+                  tags:
+                      - Bottle Endpoints
+          /bottle/search:
+              get:
+                  summary: Bottle Search
+                  # request parameters
+                  parameters:
+                      - name: page
+                        in: query
+                        schema:
+                            type: number
+                            default: 1
+                      - name: pageLimit
+                        in: query
+                        schema:
+                            type: number
+                            default: 10
+                      - name: minPrice
+                        in: query
+                        schema:
+                            type: number
+                      - name: maxPrice
+                        in: query
+                        schema:
+                            type: number
+                  responses:
+                      "200":
+                          description: List of all bottles
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: "#/components/schemas/PaginatedBottles"
+                      "400":
+                          description: Message body was empty
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: "#/components/schemas/ErrorMessage"
+                  tags:
+                      - Bottle Endpoints
+          /bottle/{bottleId}:
+              get:
+                  summary: Get a Bottle By ID
+                  # request parameters
+                  parameters:
+                      - name: bottleId
+                        in: path
+                        required: true
+                        schema:
+                            type: integer
+                  responses:
+                      "200":
+                          description: Bottle Response
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: "#/components/schemas/BottleDTO"
+                      "400":
+                          description: Message body was empty
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: "#/components/schemas/ErrorMessage"
+                  tags:
+                      - Bottle Endpoints
+          /bottle/add:
+              post:
+                  summary: Create New Bottle
+                  # request parameters
+                  requestBody:
+                      content:
+                          application/json:
+                              schema:
+                                  $ref: "#/components/schemas/BottleDTO"
+                  responses:
+                      "200":
+                          description: Bottle Response
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: "#/components/schemas/BottleDTO"
+                      "400":
+                          description: Message body was empty
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: "#/components/schemas/ErrorMessage"
+                  tags:
+                      - Bottle Endpoints
+          /bottle/update/{bottleId}:
+              put:
+                  summary: Update Bottle
+                  # request parameters
+                  requestBody:
+                      content:
+                          application/json:
+                              schema:
+                                  $ref: "#/components/schemas/BottleDTO"
+                  parameters:
+                      - name: bottleId
+                        in: path
+                        required: true
+                        schema:
+                            type: integer
+                  responses:
+                      "200":
+                          description: Updated Bottle Response
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: "#/components/schemas/BottleDTO"
+                      "400":
+                          description: Message body was empty
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: "#/components/schemas/ErrorMessage"
+                  tags:
+                      - Bottle Endpoints
+          /crate/list:
+              get:
+                  summary: Get All Crates
+                  # request parameters
+                  parameters:
+                      - name: page
+                        in: query
+                        schema:
+                            type: number
+                            default: 1
+                      - name: pageLimit
+                        in: query
+                        schema:
+                            type: number
+                            default: 10
+                  # possible responses and their parameters
+                  responses:
+                      "200":
+                          description: List of all crates
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: "#/components/schemas/PaginatedCrates"
+                      "400":
+                          description: A bad request initiated by the user
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: "#/components/schemas/ErrorMessage"
+                  tags:
+                      - Crate Endpoints
+          /crate/search:
+              get:
+                  summary: Search Crates
+                  # request parameters
+                  parameters:
+                      - name: page
+                        in: query
+                        schema:
+                            type: number
+                            default: 1
+                      - name: pageLimit
+                        in: query
+                        schema:
+                            type: number
+                            default: 10
+                      - name: minPrice
+                        in: query
+                        schema:
+                            type: number
+                      - name: maxPrice
+                        in: query
+                        schema:
+                            type: number
+                  responses:
+                      "200":
+                          description: List of all crates
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: "#/components/schemas/PaginatedCrates"
+                      "400":
+                          description: Message body was empty
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: "#/components/schemas/ErrorMessage"
+                  tags:
+                      - Crate Endpoints
+          /crate/{crateId}:
+              get:
+                  summary: Get a Crate by ID
+                  # request parameters
+                  parameters:
+                      - name: crateId
+                        in: path
+                        required: true
+                        schema:
+                            type: integer
+                  responses:
+                      "200":
+                          description: Crate Response
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: "#/components/schemas/CrateDTO"
+                      "400":
+                          description: Message body was empty
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: "#/components/schemas/ErrorMessage"
+                  tags:
+                      - Crate Endpoints
+          /crate/add:
+              post:
+                  summary: Create New Crate
+                  # request parameters
+                  requestBody:
+                      content:
+                          application/json:
+                              schema:
+                                  $ref: "#/components/schemas/CrateDTO"
+                  responses:
+                      "200":
+                          description: Crate Response
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: "#/components/schemas/CrateDTO"
+                      "400":
+                          description: Message body was empty
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: "#/components/schemas/ErrorMessage"
+                  tags:
+                      - Crate Endpoints
+          /crate/update/{crateId}:
+              put:
+                  summary: Update Crate details
+                  # request parameters
+                  requestBody:
+                      content:
+                          application/json:
+                              schema:
+                                  $ref: "#/components/schemas/CrateDTO"
+                  parameters:
+                      - name: crateId
+                        in: path
+                        required: true
+                        schema:
+                            type: integer
+                  responses:
+                      "200":
+                          description: Updated Crate Response
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: "#/components/schemas/CrateDTO"
+                      "400":
+                          description: Message body was empty
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: "#/components/schemas/ErrorMessage"
+                  tags:
+                      - Crate Endpoints
+          /order/{orderId}:
+              get:
+                  summary: Get Order by ID
+                  parameters:
+                      - name: orderId
+                        in: path
+                        required: true
+                        schema:
+                            type: integer
+                  responses:
+                      "200":
+                          description: Order Response
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: "#/components/schemas/OrderDTO"
+                      "400":
+                          description: Message body was empty
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: "#/components/schemas/ErrorMessage"
+                  tags:
+                      - Order Endpoints
+          /order/list:
+              get:
+                  summary: Get all available orders
+                  # request parameters
+                  parameters:
+                      - name: page
+                        in: query
+                        schema:
+                            type: number
+                            default: 1
+                      - name: pageLimit
+                        in: query
+                        schema:
+                            type: number
+                            default: 10
+                  responses:
+                      "200":
+                          description: All available orders
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: "#/components/schemas/PaginatedOrders"
+                      "400":
+                          description: Message body was empty
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: "#/components/schemas/ErrorMessage"
+                  tags:
+                      - Order Endpoints
+          /order/create:
+              post:
+                  summary: Create/Submit new order
+                  # request parameters
+                  requestBody:
+                      content:
+                          application/json:
+                              schema:
+                                  $ref: "#/components/schemas/OrderDTO"
+                  responses:
+                      "200":
+                          description: Order Created Response
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: "#/components/schemas/OrderDTO"
+                      "400":
+                          description: Message body was empty
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: "#/components/schemas/ErrorMessage"
+                  tags:
+                      - Order Endpoints
+          /order/update/{orderId}:
+              put:
+                  summary: Update Order details
+                  # request parameters
+                  requestBody:
+                      content:
+                          application/json:
+                              schema:
+                                  $ref: "#/components/schemas/OrderDTO"
+                  parameters:
+                      - name: orderId
+                        in: path
+                        required: true
+                        schema:
+                            type: integer
+                  responses:
+                      "200":
+                          description: Updated Order
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: "#/components/schemas/OrderDTO"
+                      "400":
+                          description: Message body was empty
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: "#/components/schemas/ErrorMessage"
+                  tags:
+                      - Order Endpoints
+          /order/process/{orderId}/{status}:
+              get:
+                  summary: Update Order Status
+                  # request parameters
+                  parameters:
+                      - name: orderId
+                        in: path
+                        required: true
+                        schema:
+                            type: integer
+                      - name: status
+                        in: path
+                        required: true
+                        schema:
+                            type: string
+                  responses:
+                      "200":
+                          description: Updated Order Response
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: "#/components/schemas/OrderDTO"
+                      "400":
+                          description: Message body was empty
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: "#/components/schemas/ErrorMessage"
+                  tags:
+                      - Order Endpoints
+          /order/delete/{orderId}:
+              delete:
+                  summary: Delete Order
+                  parameters:
+                      - name: orderId
+                        in: path
+                        required: true
+                        schema:
+                            type: integer
+                  responses:
+                      "200":
+                          description: "Order deleted"
+                      "400":
+                          description: Message body was empty
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: "#/components/schemas/ErrorMessage"
+                  tags:
+                      - Order Endpoints
+    contentType: yaml
+    _type: api_spec
+  - _id: uts_4a93c0dd06d34db3afa992d246769223
+    parentId: wrk_0ee1dac2d83e480abe1f891394e7c840
+    modified: 1656274617117
+    created: 1656273461382
+    name: Fetch All Data
+    _type: unit_test_suite
+  - _id: env_env_04526fb5f700c4bf4a718d0a45c6d813cc706e2b_sub
+    parentId: env_04526fb5f700c4bf4a718d0a45c6d813cc706e2b
+    modified: 1656274673998
+    created: 1656273523943
+    name: Development
+    data:
+      scheme: http
+      base_path: /v1
+      host: localhost:9999
+      orderId: 1
+      crateId: 1
+      status: SUBMITTED
+      bottleId: 1
+    dataPropertyOrder:
+      "&":
+        - scheme
+        - base_path
+        - host
+        - orderId
+        - crateId
+        - status
+        - bottleId
+    color: "#7d69cb"
+    isPrivate: false
+    metaSortKey: 1656273523943
+    _type: environment
+  - _id: ut_5998f3aaf3064169b11f445848a7d137
+    parentId: uts_4a93c0dd06d34db3afa992d246769223
+    modified: 1656274132345
+    created: 1656274075056
+    requestId: req_wrk_0ee1dac2d83e480abe1f891394e7c8402553ed60
+    name: Returns 200
+    code: |-
+      const response1 = await insomnia.send();
+      expect(response1.status).to.equal(200);
+    _type: unit_test
+  - _id: ut_ab89a8b1f3b9465883df819dd698eb79
+    parentId: uts_4a93c0dd06d34db3afa992d246769223
+    modified: 1656274374131
+    created: 1656274144085
+    requestId: req_wrk_0ee1dac2d83e480abe1f891394e7c8400e2ee0d3
+    name: Returns 200
+    code: |-
+      const response1 = await insomnia.send();
+      expect(response1.status).to.equal(200);
+    _type: unit_test
+  - _id: ut_88eb467921d54164aa0b532bbe74f697
+    parentId: uts_4a93c0dd06d34db3afa992d246769223
+    modified: 1656274376398
+    created: 1656274153287
+    requestId: req_wrk_0ee1dac2d83e480abe1f891394e7c8404cb6ae7d
+    name: Returns 200
+    code: |-
+      const response1 = await insomnia.send();
+      expect(response1.status).to.equal(200);
+    _type: unit_test
+  - _id: ut_cac03ab8fce94b5dade950d1407285b7
+    parentId: uts_4a93c0dd06d34db3afa992d246769223
+    modified: 1656274167273
+    created: 1656274163041
+    requestId: req_wrk_0ee1dac2d83e480abe1f891394e7c84052c7de1b
+    name: Returns 200
+    code: |-
+      const response1 = await insomnia.send();
+      expect(response1.status).to.equal(200);
+    _type: unit_test
+  - _id: ut_1a90b6ab365f4076a4a4f189d13d220c
+    parentId: uts_4a93c0dd06d34db3afa992d246769223
+    modified: 1656274176057
+    created: 1656274169643
+    requestId: req_wrk_0ee1dac2d83e480abe1f891394e7c840addacd68
+    name: Returns 200
+    code: |-
+      const response1 = await insomnia.send();
+      expect(response1.status).to.equal(200);
+    _type: unit_test
+  - _id: ut_340779f4ef3a42feb57533af570083c4
+    parentId: uts_4a93c0dd06d34db3afa992d246769223
+    modified: 1656274204856
+    created: 1656274177918
+    requestId: req_wrk_0ee1dac2d83e480abe1f891394e7c840c76ae2ac
+    name: Returns 200
+    code: |-
+      const response1 = await insomnia.send();
+      expect(response1.status).to.equal(200);
+    _type: unit_test
